@@ -139,7 +139,7 @@ func TestChecksumMap(t *testing.T) {
 
 func TestAdaptToVariousPlatforms(t *testing.T) {
 	config := &Config{
-		Build: cfgBuild{
+		Build: CfgBuild{
 			Bin: "tmp\\main.exe  -dev",
 		},
 	}
@@ -152,7 +152,7 @@ func TestAdaptToVariousPlatforms(t *testing.T) {
 func Test_killCmd_no_process(t *testing.T) {
 	e := Engine{
 		config: &Config{
-			Build: cfgBuild{
+			Build: CfgBuild{
 				SendInterrupt: false,
 			},
 		},
@@ -185,7 +185,7 @@ func Test_killCmd_SendInterrupt_false(t *testing.T) {
 	defer os.Remove("pid")
 	e := Engine{
 		config: &Config{
-			Build: cfgBuild{
+			Build: CfgBuild{
 				SendInterrupt: false,
 			},
 		},
@@ -266,7 +266,7 @@ func TestNestStructArrayValue(t *testing.T) {
 
 func TestNestStructArrayValueOverride(t *testing.T) {
 	c := Config{
-		Build: cfgBuild{
+		Build: CfgBuild{
 			ExcludeDir: []string{"default1", "default2"},
 		},
 	}
@@ -278,8 +278,8 @@ func TestNestStructArrayValueOverride(t *testing.T) {
 func TestCheckIncludeFile(t *testing.T) {
 	e := Engine{
 		config: &Config{
-			Build: cfgBuild{
-				IncludeFile:   []string{"main.go"},
+			Build: CfgBuild{
+				IncludeFile: []string{"main.go"},
 			},
 		},
 	}
