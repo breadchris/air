@@ -740,7 +740,7 @@ func TestWriteDefaultConfig(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	expect := defaultConfig()
+	expect := DefaultConfig()
 
 	assert.Equal(t, expect, *actual)
 }

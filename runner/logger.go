@@ -96,11 +96,11 @@ func (l *logger) watcher() logFunc {
 }
 
 func rawLogger() logFunc {
-	return newLogFunc("raw", defaultConfig().Log)
+	return newLogFunc("raw", DefaultConfig().Log)
 }
 
 func defaultLogger() logFunc {
-	return newLogFunc("white", defaultConfig().Log)
+	return newLogFunc("white", DefaultConfig().Log)
 }
 
 func (l *logger) getLogger(name string) logFunc {

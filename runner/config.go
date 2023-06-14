@@ -121,7 +121,7 @@ func InitConfig(path string) (cfg *Config, err error) {
 			return nil, err
 		}
 	}
-	config := defaultConfig()
+	config := DefaultConfig()
 	// get addr
 	ret := &config
 	err = mergo.Merge(ret, cfg, func(config *mergo.Config) {
@@ -160,7 +160,7 @@ func writeDefaultConfig() {
 	}
 	defer file.Close()
 
-	config := defaultConfig()
+	config := DefaultConfig()
 	configFile, err := toml.Marshal(config)
 	if err != nil {
 		log.Fatalf("failed to marshal the default configuration: %+v", err)
@@ -186,7 +186,7 @@ func defaultPathConfig() (*Config, error) {
 		}
 	}
 
-	dftCfg := defaultConfig()
+	dftCfg := DefaultConfig()
 	return &dftCfg, nil
 }
 
@@ -205,7 +205,7 @@ func readConfByName(name string) (*Config, error) {
 	return cfg, err
 }
 
-func defaultConfig() Config {
+func DefaultConfig() Config {
 	build := CfgBuild{
 		Cmd:          "go build -o ./tmp/main .",
 		Bin:          "./tmp/main",
@@ -268,7 +268,7 @@ func readConfig(path string) (*Config, error) {
 }
 
 func readConfigOrDefault(path string) (*Config, error) {
-	dftCfg := defaultConfig()
+	dftCfg := DefaultConfig()
 	cfg, err := readConfig(path)
 	if err != nil {
 		return &dftCfg, err

@@ -117,7 +117,7 @@ func TestReadConfByName(t *testing.T) {
 
 func TestConfPreprocess(t *testing.T) {
 	t.Setenv(airWd, "_testdata/toml")
-	df := defaultConfig()
+	df := DefaultConfig()
 	err := df.preprocess()
 	if err != nil {
 		t.Fatalf("preprocess error %v", err)
@@ -142,7 +142,7 @@ func TestConfigWithRuntimeArgs(t *testing.T) {
 	flag.Parse()
 
 	t.Run("when using bin", func(t *testing.T) {
-		df := defaultConfig()
+		df := DefaultConfig()
 		df.preprocess()
 
 		if !contains(df.Build.ArgsBin, runtimeArg) {
@@ -151,7 +151,7 @@ func TestConfigWithRuntimeArgs(t *testing.T) {
 	})
 
 	t.Run("when using full_bin", func(t *testing.T) {
-		df := defaultConfig()
+		df := DefaultConfig()
 		df.Build.FullBin = "./tmp/main"
 		df.preprocess()
 
